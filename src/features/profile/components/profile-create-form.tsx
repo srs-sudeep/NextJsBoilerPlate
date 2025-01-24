@@ -390,7 +390,7 @@ const ProfileCreateForm: React.FC<ProfileFormType> = ({
                     <AccordionItem value='item-1'>
                       <AccordionTrigger
                         className={cn(
-                          'relative !no-underline [&[data-state=closed]>button]:hidden [&[data-state=open]>.alert]:hidden',
+                          'relative no-underline! [&[data-state=closed]>button]:hidden [&[data-state=open]>.alert]:hidden',
                           errors?.jobs?.[index] && 'text-red-700'
                         )}
                       >
@@ -600,7 +600,7 @@ const ProfileCreateForm: React.FC<ProfileFormType> = ({
             type='button'
             onClick={prev}
             disabled={currentStep === 0}
-            className='rounded bg-white px-2 py-1 text-sm font-semibold text-sky-900 shadow-sm ring-1 ring-inset ring-sky-300 hover:bg-sky-50 disabled:cursor-not-allowed disabled:opacity-50'
+            className='rounded bg-white px-2 py-1 text-sm font-semibold text-sky-900 shadow-xs ring-1 ring-inset ring-sky-300 hover:bg-sky-50 disabled:cursor-not-allowed disabled:opacity-50'
           >
             <svg
               xmlns='http://www.w3.org/2000/svg'
@@ -621,7 +621,7 @@ const ProfileCreateForm: React.FC<ProfileFormType> = ({
             type='button'
             onClick={next}
             disabled={currentStep === steps.length - 1}
-            className='rounded bg-white px-2 py-1 text-sm font-semibold text-sky-900 shadow-sm ring-1 ring-inset ring-sky-300 hover:bg-sky-50 disabled:cursor-not-allowed disabled:opacity-50'
+            className='rounded bg-white px-2 py-1 text-sm font-semibold text-sky-900 shadow-xs ring-1 ring-inset ring-sky-300 hover:bg-sky-50 disabled:cursor-not-allowed disabled:opacity-50'
           >
             <svg
               xmlns='http://www.w3.org/2000/svg'
