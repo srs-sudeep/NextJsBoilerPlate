@@ -1,3 +1,4 @@
+"use client"
 // import { auth } from '@/lib/auth';
 import Providers from '@/components/layout/providers';
 import { Toaster } from '@/components/ui/sonner';
@@ -7,11 +8,8 @@ import { Lato } from 'next/font/google';
 import NextTopLoader from 'nextjs-toploader';
 import './globals.css';
 import ThemeProvider from '@/components/layout/ThemeToggle/theme-provider';
-
-export const metadata: Metadata = {
-  title: 'Next Shadcn',
-  description: 'Basic dashboard with Next.js and Shadcn'
-};
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { useMemo, useState } from 'react';
 
 const lato = Lato({
   subsets: ['latin'],
@@ -19,15 +17,20 @@ const lato = Lato({
   display: 'swap'
 });
 
+
 export default async function RootLayout({
   children
 }: {
   children: React.ReactNode;
 }) {
+  const [queryClient] = useState(()=> new QueryClient({}))
+  // const queryClient = new QueryClient();
   // const session = await auth();
   return (
+    
     <html lang='en' className={`${lato.className}`} suppressHydrationWarning>
       <body className={'overflow-hidden'}>
+      <QueryClientProvider client={queryClient}>
         <NextTopLoader showSpinner={false} />
         <NuqsAdapter>
           {/* <Providers session={session}> */}
@@ -35,7 +38,9 @@ export default async function RootLayout({
             {children}
           {/* </Providers> */}
         </NuqsAdapter>
+        </QueryClientProvider>
       </body>
     </html>
+    
   );
 }

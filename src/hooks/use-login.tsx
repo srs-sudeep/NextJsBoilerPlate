@@ -1,23 +1,4 @@
-// import { useMutation } from "@tanstack/react-query";
-
-// export default function useLogin() {
-//   return useMutation(async ({ username, password }: { username: string; password: string }) => {
-//     const response = await fetch("http://localhost:8080/auth/login", {
-//       method: "POST",
-//       headers: {
-//         "Content-Type": "application/json",
-//       },
-//       body: JSON.stringify({ username, password }),
-//     });
-
-//     if (!response.ok) {
-//       throw new Error("Login failed");
-//     }
-
-//     return response.json();
-//   });
-// }
-
+// "use client"
 import { useMutation } from "@tanstack/react-query";
 
 // Define types for input and response

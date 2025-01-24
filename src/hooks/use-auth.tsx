@@ -1,4 +1,5 @@
-import { useState, useEffect } from "react";
+// "use client"
+import * as React from "react";
 import {jwtDecode, JwtPayload} from 'jwt-decode'
 
 interface CustomJwtPayload extends JwtPayload {
@@ -6,12 +7,12 @@ interface CustomJwtPayload extends JwtPayload {
   }
 
 export default function useAuth() {
-    const [auth, setAuth] = useState<{ token: string | null; role: string | null }>({
+    const [auth, setAuth] = React.useState<{ token: string | null; role: string | null }>({
         token: null,
         role: null,
       });
 
-  useEffect(() => {
+  React.useEffect(() => {
     const token = localStorage.getItem("token");
     if (token) {
       const decoded = jwtDecode<CustomJwtPayload>(token);
